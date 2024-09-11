@@ -78,7 +78,7 @@ const DepartmentTable = () => {
    */
   const GetList = () => {
     setLoading(true);
-    axios.get(`https://3.137.219.233/api/departments?${qs.stringify(getRandomuserParams(tableParams))}`).then((results) => {
+    axios.get(`https://3.133.140.229/api/departments?${qs.stringify(getRandomuserParams(tableParams))}`).then((results) => {
       
       let dataResult = results.data.map(item => ({
         key : item.id,
