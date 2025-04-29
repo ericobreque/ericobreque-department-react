@@ -1,6 +1,6 @@
 import './App.css';
 import { Breadcrumb, Layout, theme } from 'antd';
-import DepartmentTable from './components/DepartmentTable';
+import TagTable from './components/TagTable';
 import Navbar from './components/Navbar';
 import HeaderS from './components/HeaderS';
 
@@ -46,7 +46,7 @@ const App = () => {
           }}
         >
           Content
-          <DepartmentTable />
+          <TagTable />
           
         </div>
         
@@ -56,7 +56,7 @@ const App = () => {
           textAlign: 'center',
         }}
       >
-        Challenge: React & Laravel ©{new Date().getFullYear()}
+        Nahuelbuta © {new Date().getFullYear()}
         Created by <a href='https://ericobreque.cl'>Eric Obreque</a> 
       </Footer>
     </Layout>

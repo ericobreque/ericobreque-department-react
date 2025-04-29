@@ -9,7 +9,7 @@ const getRandomuserParams = (params) => ({
   ...params,
 });
 
-const DepartmentTable = () => {
+const TagTable = () => {
   
   const [data, setData] = useState(); // En 'data' se cargará el istado obtenido de la api
   const [loading, setLoading] = useState(false);
@@ -30,46 +30,29 @@ const DepartmentTable = () => {
    */
   const columns = [
     {
-      title: 'División',
-      dataIndex: 'name',
-      filters: filterData(data)(i => i.name),
+      title: 'Caja',
+      dataIndex: 'box',
+      filters: filterData(data)(i => i.box),
       filterSearch: true,
-      onFilter: (value, record) => record.name.startsWith(value),
-      sorter: (a, b) => a.name.localeCompare(b.name),
-      width: '20%',
+      onFilter: (value, record) => record.box.startsWith(value),
+      sorter: (a, b) => a.box.localeCompare(b.box),
+      width: '25%',
     },
     {
-      title: 'División superior',
-      dataIndex: 'division',
+      title: 'Code',
+      dataIndex: 'code',
       filterSearch: true,
-      onFilter: (value, record) => record.division.startsWith(value),
-      sorter: (a, b) => a.division.localeCompare(b.division),
-      width: '20%',
+      onFilter: (value, record) => record.code.startsWith(value),
+      sorter: (a, b) => a.code.localeCompare(b.code),
+      width: '25%',
     },
     {
-      title: 'Colaboradores',
-      dataIndex: 'employee',
-      sorter: (a, b) => a.employee.localeCompare(b.employee),
-    },
-    {
-      title: 'Nivel',
-      dataIndex: 'level',
+      title: 'Estado',
+      dataIndex: 'status',
       filterSearch: true,
-      onFilter: (value, record) => record.level.startsWith(value),
-      sorter: (a, b) => a.level - b.level,
-    },
-    {
-      title: 'Subdivisiones',
-      dataIndex: 'subdivisions',
-      sorter: true,
-    },
-    {
-      title: 'Embajadores',
-      dataIndex: 'ambassador',
-      filters: filterData(data)(i => i.ambassador),
-      filterSearch: true,
-      onFilter: (value, record) => record.ambassador.startsWith(value),
-      sorter: (a, b) => a.ambassador.localeCompare(b.ambassador),
+      onFilter: (value, record) => record.status.startsWith(value),
+      sorter: (a, b) => a.status.localeCompare(b.status),
+      width: '50%',
     },
   ];
 
@@ -78,16 +61,13 @@ const DepartmentTable = () => {
    */
   const GetList = () => {
     setLoading(true);
-    axios.get(`https://3.133.140.229/api/departments?${qs.stringify(getRandomuserParams(tableParams))}`).then((results) => {
+    axios.get(`http://nahuelbutalaravel.test/api/tags?${qs.stringify(getRandomuserParams(tableParams))}`).then((results) => {
       
       let dataResult = results.data.map(item => ({
         key : item.id,
-        name : item.name,
-        division : item.division,
-        employee : item.employee,
-        level : item.level,
-        subdivisions : item.subdivisions,
-        ambassador : item.ambassador
+        box : item.box,
+        code : item.code,
+        status : item.status,
       }));
       setData(dataResult);
       setLoading(false);
@@ -143,4 +123,4 @@ const DepartmentTable = () => {
     />
   );
 };
-export default DepartmentTable;
+export default TagTable;
