@@ -56,8 +56,7 @@ const App = () => {
           textAlign: 'center',
         }}
       >
-        Nahuelbuta © {new Date().getFullYear()}
-        Created by <a href='https://ericobreque.cl'>Eric Obreque</a> 
+        Created by <a href='https://ericobreque.cl'>Eric Obreque</a> © {new Date().getFullYear()}
       </Footer>
     </Layout>
   );
